@@ -48,3 +48,19 @@ chmod +x unixbench.sh
 ## 自动初始化
 
 [什么是 Cloud-Init，为什么这么酷？](https://contabo.com/blog/what-is-cloud-init/)
+
+## 判断是否是同一台物理机
+
+做集群，为了保证可靠性，需要避免 VPS 在同一台物理机上
+
+对于 Linux，可以用下面命令：
+
+`dmidecode -t 4 | grep ID`
+
+对于 Windows，可以用下面命令：
+
+`wmic cpu get processorid`
+
+这个命令会显示 CPU ID，不同物理机 CPU ID 是不一样的
+
+如果两个虚拟机显示的 CPU ID 一样，那是同一个物理机
