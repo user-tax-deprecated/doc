@@ -1,8 +1,19 @@
+vsmtp 密码验证配置
 
-apt-get install -y sasl2-bin
+https://vsmtp.rs/
 
-configure the saslauthd daemon with MECHANISM="shadow" in /etc/default/saslauthd
+`apt-get install -y sasl2-bin`
 
+edit /etc/default/saslauthd
+```
+START=yes
+
+MECHANISM="shadow" 
+```
+
+run
+```
 /lib/systemd/systemd-sysv-install enable saslauthd
 
 systemctl enable saslauthd --now
+```
